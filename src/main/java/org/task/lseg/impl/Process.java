@@ -64,4 +64,12 @@ public class Process {
     public long getDuration() {
         return duration;
     }
+
+    public long getDurationUntil(LocalTime lastTimestamp) {
+        return Duration.between(timestampStart, lastTimestamp).getSeconds();
+    }
+
+    public boolean isEnded() {
+        return timestampEnd != null;
+    }
 }
