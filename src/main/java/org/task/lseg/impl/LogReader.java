@@ -17,6 +17,6 @@ public class LogReader {
         String description = logParts[DESCRIPTION_INDEX].trim();
         EStateProcess stateProcess = EStateProcess.valueOf(logParts[STATE_PROCESS_INDEX].trim().toUpperCase());
         int PID = Integer.parseInt(logParts[PID_INDEX].trim());
-        System.out.println("Timestamp: " + timestamp + ", Description: " + description + ", State: " + stateProcess + ", PID: " + PID);
+        LogAnalyzer.getInstance().analyzeLog(timestamp, description, stateProcess, PID);
     }
 }
