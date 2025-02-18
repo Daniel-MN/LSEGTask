@@ -15,7 +15,7 @@ public class CSVFileReader {
                 lineProcessor.accept(fields);
             }
         } catch (IOException e) {
-           throw new RuntimeException("Error reading the file: " + filePath, e);
+           throw new LogsMonitorException("Error reading the file: " + filePath, e);
         }
     }
 }

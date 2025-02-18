@@ -14,7 +14,7 @@ public class OutputFileWriter {
         try {
             this.writer = new BufferedWriter(new FileWriter(outputFilePath, false));
         } catch (IOException e) {
-            throw new RuntimeException("Error creating the output file: " + outputFilePath, e);
+            throw new LogsMonitorException("Error creating the output file: " + outputFilePath, e);
         }
     }
 
@@ -31,7 +31,7 @@ public class OutputFileWriter {
             writer.write("WARNING: Process " + process.getPID() + " exceeded warning threshold\n");
             writer.flush();
         } catch (IOException e) {
-            throw new RuntimeException("Error writing to the output file: " + outputFilePath, e);
+            throw new LogsMonitorException("Error writing to the output file: " + outputFilePath, e);
         }
     }
 
@@ -40,7 +40,7 @@ public class OutputFileWriter {
             writer.write("ERROR: Process " + process.getPID() + " exceeded error threshold\n");
             writer.flush();
         } catch (IOException e) {
-            throw new RuntimeException("Error writing to the output file: " + outputFilePath, e);
+            throw new LogsMonitorException("Error writing to the output file: " + outputFilePath, e);
         }
     }
 
@@ -49,7 +49,7 @@ public class OutputFileWriter {
             writer.write("Process " + process.getPID() + " ended with duration " + process.getDuration() + " seconds\n");
             writer.flush();
         } catch (IOException e) {
-            throw new RuntimeException("Error writing to the output file: " + outputFilePath, e);
+            throw new LogsMonitorException("Error writing to the output file: " + outputFilePath, e);
         }
     }
 
@@ -59,7 +59,7 @@ public class OutputFileWriter {
                 writer.close();
             }
         } catch (IOException e) {
-            throw new RuntimeException("Error writing to the output file: " + outputFilePath, e);
+            throw new LogsMonitorException("Error writing to the output file: " + outputFilePath, e);
         }
     }
 }

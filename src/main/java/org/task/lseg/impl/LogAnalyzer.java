@@ -48,11 +48,11 @@ public class LogAnalyzer {
             if (stateProcess == EStateProcess.START) {
                 process.start(description, timestamp);
             } else {
-                throw new RuntimeException("Invalid log line. Process with PID " + pid + " should start before ending.");
+                throw new LogsMonitorException("Invalid log line. Process with PID " + pid + " should start before ending.");
             }
 
             if (lastTimestamp != null && process.getTimestampStart().isBefore(lastTimestamp)) {
-                throw new RuntimeException("The logging file has an invalid order of timestamps. " +
+                throw new LogsMonitorException("The logging file has an invalid order of timestamps. " +
                         "Process with PID " + pid + " should start after the last process.");
             }
             processes.add(process);

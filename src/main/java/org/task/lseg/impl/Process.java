@@ -15,7 +15,7 @@ public class Process {
     public Process(long PID) {
         // throw an exception if PID is negative
         if (PID < 0) {
-            throw new IllegalArgumentException("PID must be a positive number.");
+            throw new LogsMonitorException("PID must be a positive number.");
         }
         this.PID = PID;
     }
@@ -28,7 +28,7 @@ public class Process {
 
     public void end(String descriptionEnd, String timestampEnd) {
         if (timestampStart == null) {
-            throw new RuntimeException("The process was never started!");
+            throw new LogsMonitorException("The process was never started!");
         }
 
         this.descriptionEnd = descriptionEnd;
@@ -37,7 +37,7 @@ public class Process {
         if (timestampStart.isBefore(this.timestampEnd)) {
             duration = Duration.between(timestampStart, this.timestampEnd).getSeconds();
         } else {
-            throw new RuntimeException("The end timestamp must be after the start timestamp for PID: " + PID);
+            throw new LogsMonitorException("The end timestamp must be after the start timestamp for PID: " + PID);
         }
     }
 

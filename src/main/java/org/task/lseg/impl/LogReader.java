@@ -10,7 +10,7 @@ public class LogReader {
     public void readLog(String[] logParts) {
         // process the log
         if (logParts.length != NR_OF_PARTS) {
-            throw new RuntimeException("Invalid log line: " + String.join(",", logParts));
+            throw new LogsMonitorException("Invalid log line: " + String.join(",", logParts));
         }
 
         String timestamp = logParts[TIMESTAMP_INDEX].trim();
