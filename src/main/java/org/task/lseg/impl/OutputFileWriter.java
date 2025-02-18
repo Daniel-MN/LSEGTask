@@ -46,7 +46,7 @@ public class OutputFileWriter {
 
     public void logProcessEnd(Process process) {
         try {
-            writer.write("Process " + process.getPID() + " ended with duration " + process.getDuration() + " seconds\n");
+            writer.write("INFO: Process " + process.getPID() + " ended with duration " + process.getDuration() + " seconds\n");
             writer.flush();
         } catch (IOException e) {
             throw new LogsMonitorException("Error writing to the output file: " + outputFilePath, e);
